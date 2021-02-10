@@ -2,7 +2,7 @@
 <br>
 Members :
 <br>
-BALACHANDRA Thacikaran
+BALACHANDRAN Thacikaran
 <br>
 DA SILVA Bruno
 <br>
