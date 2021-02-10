@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block title %}
+myprofile
+{% endblock title %}
+
+{% block content %}
+
+<!--MODAL-->
+<div class="ui modal mymodal">
+  <i class="close icon"></i>
+  <div class="header">
+    Modifier le Profil
+  </div>
+  <div class="image content">
+    <div class="ui medium image">
+      <img src={{profile.avatar.url}}>
+    </div>
+    <div class="description">
+      <div class="ui header">Ajouter de nouvelles informations sur vous </div>
+      
+      <form action="" method="POST" class="ui form" enctype='multipart/form-data'>
+            {% csrf_token %}
+            {{form.as_p}}
+           
+                
+    </div>
+  </div>
+  <div class="actions">
+    
+    <button type='submit' class="ui positive right labeled icon button">
+      Modifier
+      <i class="checkmark icon"></i>
+    </button>
+    </form>
+  </div>
+</div>
+
+
+
+
+<div class="ui segment">
+
+    {% if confirm %}
+        <div class="ui green message">Votre profil a été modifié</div>
+    {% endif %}
+    <h3> mon profil : {{request.user}} </h3>
+    <div class ="ui grid">
+        <div class='row'>
+            <div class='six wide column'>
+                <img class= "ui medium rounded image" src={{profile.avatar.url}}>
+                <div class="row mt-5">
+                    <button class='ui secondary button' id='modal-btn'>Modifer votre profil</button>
+                </div>
+            </div>
+            <div class ="ten wide column">
+                <table class="ui table">
+                    <tbody>
+                        <tr>
+                            <td> Pseudo </td>
+                            <td>{{profile.user}}</td>
+                        
+                        </tr>
+                         <tr>
+                            <td> Prenom </td>
+                            <td>{{profile.prenom}}</td>
+                        
+                        </tr>
+                         <tr>
+                            <td> Nom de Famille </td>
+                            <td>{{profile.nomdefamille}}</td>
+                        
+                        </tr>
+                         <tr>
+                            <td> Description du poste actuel </td>
+                            <td>{{profile.description_poste}}</td>
+                        
+                        </tr>
+                         <tr>
+                            <td> Description du produit </td>
+                            <td>{{profile.description_produit}}</td>
+                        
+                        </tr>
+                         <tr>
+                            <td> Nombre de links </td>
+                            <td>{{profile.get_link_no}}</td>
+                        
+                        </tr>
+                        <tr>
+                            <td> Links </td>
+                            <td>
+                                <ul>
+                                    {% for link in profile.get_link %}
+                                        <li>{{link}}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                        
+                        </tr>
+                        <tr>
+                            <td> Nombre de posts </td>
+                            <td>{{profile.get_posts_no}}</td>
+                        
+                        </tr>
+                         <tr>
+                            <td> Nombre de likes envoyés </td>
+                            <td>{{profile.get_likes_given_no}}</td>
+                        
+                        </tr>
+                        <tr>
+                            <td> Nombre de likes reçus </td>
+                            <td>{{profile.get_likes_received_no}}</td>
+                        
+                        </tr>
+                        
+                        
+                        
+                    </tbody>
+                    
+                    
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+{% endblock content %}

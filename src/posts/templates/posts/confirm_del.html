@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Effacer le post
+{% endblock title %}
+
+{% block content %}
+
+    {% if messages  %}
+        {% for message in messages %}
+            {% if 'warning' in message.tags %}
+                <div class ="ui negative message">
+                    <div class = "header">
+                        {{message}}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        
+    {% endif %}
+
+    {% if not messages %}
+        <div class="ui segment">
+            <h3> Effacer le post ? </h3>
+            <form action ="" method ="POST">
+                {% csrf_token %}
+                <p> Voulez-Vous vraiment effacer ce post ? </p>
+                <button type ="submit" >Oui</button>
+            </form>
+        </div>
+    {% endif %}
+
+{% endblock content %}
